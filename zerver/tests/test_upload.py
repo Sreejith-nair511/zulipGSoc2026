@@ -2,7 +2,7 @@ import os
 import re
 import tempfile
 from datetime import timedelta
-from io import StringIO
+from io import StringIO, BytesIO
 from unittest import mock
 from unittest.mock import patch
 from urllib.parse import quote
@@ -2097,7 +2097,6 @@ class RealmLogoTest(UploadSerializeMixin, ZulipTestCase):
 
     def test_logo_upload_empty_file_error(self) -> None:
         self.login("iago")
-        from io import BytesIO
         empty_file = BytesIO(b"")
         empty_file.name = "empty.png"
         result = self.client_post(
